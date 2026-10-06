@@ -1,5 +1,7 @@
 # Cloud Projects Portfolio
 
+![AWS Cloud Portfolio](assets/portfolio-banner.png)
+
 Hands-on AWS projects covering compute, serverless, storage, databases, security and event-driven architecture, plus a project-management simulation.
 
 ## Projects
