@@ -46,9 +46,17 @@ Resource tree:
    - `https://<api-id>.execute-api.<region>.amazonaws.com/prod/s3/sample-data.json` returned the file from S3
 
 ## Screenshots
-<!-- ![Resource tree](screenshots/resources.png) -->
-<!-- ![S3 integration request](screenshots/s3-integration.png) -->
-<!-- ![Browser responses](screenshots/responses.png) -->
+**`GET /lambda` method execution: Client → Method request → Integration request → Lambda, using Lambda proxy integration (ARN redacted)**
+
+![GET /lambda method](screenshots/01-lambda-get-method.png)
+
+**Resource tree and `ANY /s3/{proxy+}`: an AWS service integration that calls S3 directly (no Lambda), with path override `<bucket>/{proxy}` (ARN redacted)**
+
+![S3 proxy integration](screenshots/02-s3-proxy-integration.png)
+
+**Deployed to `prod` and tested in the browser: `/prod/lambda` returns "Hello from Lambda!" and `/prod/s3/sample-data.json` returns the file straight from S3 ("Hello from S3!")**
+
+![Browser responses](screenshots/03-browser-responses.png)
 
 ## What I learned
 - **Proxy integration** passes the whole request (path, headers, body) to Lambda, which must return `statusCode`, `headers` and `body`. It's the default for modern APIs.
