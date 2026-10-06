@@ -19,6 +19,7 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 9 | [ALB Path-Based Routing](09-alb-path-based-routing/) | Load balancer routing requests to Lambda by URL path | ELB (ALB), Lambda, VPC |
 | 10 | [Well-Architected Review](10-well-architected-review/) | Assessing a workload against the six pillars and planning fixes | Well-Architected Tool, S3 |
 | 11 | [SQS + Lambda Basics](11-sqs-lambda-basics/) | Decoupling a producer and consumer with a queue | SQS, Lambda, CloudWatch Logs |
+| 12 | [ALB vs API Gateway](12-alb-vs-api-gateway/) | Same Lambda backend behind two front doors, compared and debugged | ELB (ALB), API Gateway, Lambda, DynamoDB, VPC |
 
 ## Skills
 **AWS:** EC2 · Elastic Load Balancing · Lambda · S3 · DynamoDB · API Gateway · SQS · SNS · EventBridge · IAM · KMS · CloudWatch · CloudShell · Well-Architected Tool
