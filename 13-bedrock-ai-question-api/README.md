@@ -98,4 +98,4 @@ curl -s -X POST "https://<api-id>.execute-api.us-east-1.amazonaws.com/default/as
 - **Throttling is a speed bump, not a budget.** API Gateway limits are approximate, so an alarm on actual usage is the real safety net.
 - **Two limits, two error codes:** `429` means API Gateway throttled the request, and `503` means the backend (Lambda concurrency) was full.
 - **Observability comes free if you use it.** Bedrock publishes token and latency metrics to CloudWatch automatically, and one structured log line per call makes each request searchable.
-- **Clean up when finished:** the HTTP API, Lambda function, IAM role, alarm, SNS topic and dashboard all need deleting, so nothing keeps running or costing money.
+- **Cleanup:** when I finished, I deleted the HTTP API, Lambda function, IAM role, alarm, dashboard and SNS topic, so nothing keeps running or costing money.
