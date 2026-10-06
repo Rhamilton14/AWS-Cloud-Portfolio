@@ -38,6 +38,10 @@ Full source: [`lambda_function.py`](lambda_function.py). The table name comes fr
 ```
 
 ## Screenshots
+**The `lambda-dynamodb-basics` table the function reads and writes (Active, partition key `id`)**
+
+![DynamoDB table](screenshots/00-table.png)
+
 **`check_connectivity`: Lambda reaches the `lambda-dynamodb-basics` table through its IAM role and reports it ACTIVE**
 
 ![Connectivity test](screenshots/01-check-connectivity.png)
