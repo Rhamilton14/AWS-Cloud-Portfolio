@@ -10,17 +10,17 @@
       "Condition": { "Bool": { "aws:SecureTransport": "false" } }
     },
     {
-      "Sid": "DenyAllExceptLambda",
+      "Sid": "DenyAllExceptLambdaRole",
       "Effect": "Deny",
       "Principal": "*",
       "Action": ["s3:GetObject", "s3:ListBucket"],
       "Resource": ["arn:aws:s3:::YOUR_BUCKET_NAME", "arn:aws:s3:::YOUR_BUCKET_NAME/*"],
-      "Condition": { "StringNotEquals": { "aws:PrincipalServiceName": "lambda.amazonaws.com" } }
+      "Condition": { "StringNotLike": { "aws:PrincipalArn": "YOUR_LAMBDA_ROLE_ARN" } }
     },
     {
-      "Sid": "AllowLambdaAccess",
+      "Sid": "AllowLambdaRoleAccess",
       "Effect": "Allow",
-      "Principal": { "Service": "lambda.amazonaws.com" },
+      "Principal": { "AWS": "YOUR_LAMBDA_ROLE_ARN" },
       "Action": ["s3:GetObject", "s3:ListBucket"],
       "Resource": ["arn:aws:s3:::YOUR_BUCKET_NAME", "arn:aws:s3:::YOUR_BUCKET_NAME/*"]
     }
