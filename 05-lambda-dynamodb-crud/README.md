@@ -38,8 +38,26 @@ Full source: [`lambda_function.py`](lambda_function.py). The table name comes fr
 ```
 
 ## Screenshots
-<!-- ![Connectivity test](screenshots/connectivity.png) -->
-<!-- ![Item in table](screenshots/item.png) -->
+**`check_connectivity`: Lambda reaches the `lambda-dynamodb-basics` table through its IAM role and reports it ACTIVE**
+
+![Connectivity test](screenshots/01-check-connectivity.png)
+
+**`put_item`: Lambda writes `student-1` to the table with boto3**
+
+![put_item result](screenshots/02-put-item.png)
+
+**`get_item`: reading `student-1` back, in DynamoDB's typed JSON format (`{"S": ...}`)**
+
+![get_item result](screenshots/03-get-item.png)
+
+**`delete_item`: removing `student-1`**
+
+![delete_item result](screenshots/04-delete-item.png)
+
+**`get_item` after the delete: the code returns its own 404 "Item not found", since DynamoDB returns no error for a missing key**
+
+![get_item 404](screenshots/05-get-item-404.png)
+
 
 ## What I learned
 - No connection string or password: boto3 authenticates with the Lambda's **execution role**.
