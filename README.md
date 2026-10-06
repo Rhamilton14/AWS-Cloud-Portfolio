@@ -20,9 +20,10 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 10 | [Well-Architected Review](10-well-architected-review/) | Assessing a workload against the six pillars and planning fixes | Well-Architected Tool, S3 |
 | 11 | [SQS + Lambda Basics](11-sqs-lambda-basics/) | Decoupling a producer and consumer with a queue | SQS, Lambda, CloudWatch Logs |
 | 12 | [ALB vs API Gateway](12-alb-vs-api-gateway/) | Same Lambda backend behind two front doors, compared and debugged | ELB (ALB), API Gateway, Lambda, DynamoDB, VPC |
+| 13 | [AI Question API with Bedrock](13-bedrock-ai-question-api/) | A generative AI feature with least privilege, cost controls and monitoring | Bedrock, Lambda, API Gateway, IAM, CloudWatch, SNS |
 
 ## Skills
-**AWS:** EC2 · Elastic Load Balancing · Lambda · S3 · DynamoDB · API Gateway · SQS · SNS · EventBridge · IAM · KMS · CloudWatch · CloudShell · Well-Architected Tool
+**AWS:** Bedrock (generative AI) · EC2 · Elastic Load Balancing · Lambda · S3 · DynamoDB · API Gateway · SQS · SNS · EventBridge · IAM · KMS · CloudWatch · CloudShell · Well-Architected Tool
 **Languages and tools:** Python (boto3) · Bash · AWS CLI · JSON IAM policies · Linux
 
 ## About me
