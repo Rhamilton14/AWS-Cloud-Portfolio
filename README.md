@@ -17,9 +17,10 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 7 | [S3 Event-Driven Architecture](07-s3-event-driven-architecture/) | Fan-out and event routing | S3, Lambda, SNS, EventBridge |
 | 8 | [API Gateway + Lambda + S3](08-api-gateway-lambda-s3/) | REST API with proxy and direct service integrations | API Gateway, Lambda, S3 |
 | 9 | [Siemens Electrification Budget](09-siemens-electrification-budget/) | Budget tracking and stakeholder reporting | Project management |
+| 10 | [ALB Path-Based Routing](10-alb-path-based-routing/) | Load balancer routing requests to Lambda by URL path | ELB (ALB), Lambda, VPC |
 
 ## Skills
-**AWS:** EC2 · Lambda · S3 · DynamoDB · API Gateway · SNS · EventBridge · IAM · KMS · CloudWatch · CloudShell
+**AWS:** EC2 · Elastic Load Balancing · Lambda · S3 · DynamoDB · API Gateway · SNS · EventBridge · IAM · KMS · CloudWatch · CloudShell
 **Languages and tools:** Python (boto3) · Bash · AWS CLI · JSON IAM policies · Linux
 
 ## About me
