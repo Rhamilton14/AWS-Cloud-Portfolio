@@ -53,9 +53,30 @@ aws cloudwatch get-metric-statistics --namespace AWS/Lambda --metric-name Invoca
 ```
 
 ## Screenshots
-<!-- Add your own screenshots to ./screenshots and uncomment -->
-<!-- ![sts get-caller-identity](screenshots/identity.png) -->
-<!-- ![Lambda invoke output](screenshots/lambda-invoke.png) -->
+**Task 1: AWS CLI v2 in CloudShell, authenticated with temporary role credentials (account details redacted)**
+
+![CLI identity](screenshots/01-cli-identity.png)
+
+**Task 2: Listing every object in the practice bucket with `aws s3 ls --recursive` (account number redacted)**
+
+![S3 recursive list](screenshots/02-s3-recursive-list.png)
+
+**Task 3: Reading objects straight from S3 with `aws s3 cp`, then pretty-printing JSON with Python in CloudShell (account number redacted)**
+
+![S3 read files](screenshots/03-s3-read-files.png)
+
+**Task 4: Inspecting a Lambda function's configuration and invoking it from the CLI (StatusCode 200, "Hello from AWS Lambda!")**
+
+![Lambda get-function and invoke](screenshots/04-lambda-get-and-invoke.png)
+
+**Task 5: Tailing the function's CloudWatch Logs from the CLI (START, the function's own log lines, END and the REPORT with duration and memory used)**
+
+![CloudWatch logs tail](screenshots/05-logs-tail.png)
+
+**Task 6: Pulling the Lambda Invocations metric from CloudWatch with the CLI (Sum = 1 for the invoke above)**
+
+![Invocations metric](screenshots/06-invocations-metric.png)
+
 
 ## What I learned
 - Anything I can click in the Console I can script with the CLI, which is much faster for repeat work.
