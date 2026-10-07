@@ -21,9 +21,10 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 11 | [SQS + Lambda Basics](11-sqs-lambda-basics/) | Decoupling a producer and consumer with a queue | SQS, Lambda, CloudWatch Logs |
 | 12 | [ALB vs API Gateway](12-alb-vs-api-gateway/) | Same Lambda backend behind two front doors, compared and debugged | ELB (ALB), API Gateway, Lambda, DynamoDB, VPC |
 | 13 | [AI Question API with Bedrock](13-bedrock-ai-question-api/) | A generative AI feature with least privilege, cost controls and monitoring | Bedrock, Lambda, API Gateway, IAM, CloudWatch, SNS |
+| 14 | [Lambda Power Tuning + Cost Analysis](14-lambda-power-tuning/) | Data-driven Lambda memory sizing priced in the AWS Pricing Calculator: 14x faster for the same cost | Lambda, Step Functions, SAR, CloudFormation, Pricing Calculator |
 
 ## Skills
-**AWS:** Bedrock (generative AI) · EC2 · Elastic Load Balancing · Lambda · S3 · DynamoDB · API Gateway · SQS · SNS · EventBridge · IAM · KMS · CloudWatch · CloudShell · Well-Architected Tool
+**AWS:** Bedrock (generative AI) · EC2 · Elastic Load Balancing · Lambda · S3 · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · IAM · KMS · CloudWatch · CloudShell · Well-Architected Tool · Pricing Calculator
 **Languages and tools:** Python (boto3) · Bash · AWS CLI · JSON IAM policies · Linux
 
 ## About me
