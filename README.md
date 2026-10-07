@@ -24,6 +24,7 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 14 | [Lambda Power Tuning + Cost Analysis](14-lambda-power-tuning/) | Data-driven Lambda memory sizing priced in the AWS Pricing Calculator: 14x faster for the same cost | Lambda, Step Functions, SAR, CloudFormation, Pricing Calculator |
 | 15 | [ALB vs NLB](15-alb-vs-nlb/) | Layer 7 path routing vs Layer 4 port routing on the same servers, tested and compared | ELB (ALB + NLB), EC2, Lambda, CloudShell |
 | 16 | [RDS Basics](16-rds-basics/) | Launching a managed MySQL database, connecting securely, and defining a SQL schema | RDS (MySQL), VPC security groups, EBS, CloudShell |
+| 17 | [Three-Tier Architecture](17-three-tier-architecture/) | Tracing a request through public and private tiers, then fixing a broken data tier with least-privilege IAM | VPC, ELB (external + internal ALB), EC2, IAM, DynamoDB |
 
 ## Skills
 **AWS:** Bedrock (generative AI) · EC2 · Elastic Load Balancing · Lambda · S3 · RDS (MySQL) · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · IAM · KMS · CloudWatch · CloudShell · Well-Architected Tool · Pricing Calculator
