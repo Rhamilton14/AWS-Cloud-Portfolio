@@ -23,10 +23,11 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 13 | [AI Question API with Bedrock](13-bedrock-ai-question-api/) | A generative AI feature with least privilege, cost controls and monitoring | Bedrock, Lambda, API Gateway, IAM, CloudWatch, SNS |
 | 14 | [Lambda Power Tuning + Cost Analysis](14-lambda-power-tuning/) | Data-driven Lambda memory sizing priced in the AWS Pricing Calculator: 14x faster for the same cost | Lambda, Step Functions, SAR, CloudFormation, Pricing Calculator |
 | 15 | [ALB vs NLB](15-alb-vs-nlb/) | Layer 7 path routing vs Layer 4 port routing on the same servers, tested and compared | ELB (ALB + NLB), EC2, Lambda, CloudShell |
+| 16 | [RDS Basics](16-rds-basics/) | Launching a managed MySQL database, connecting securely, and defining a SQL schema | RDS (MySQL), VPC security groups, EBS, CloudShell |
 
 ## Skills
-**AWS:** Bedrock (generative AI) · EC2 · Elastic Load Balancing · Lambda · S3 · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · IAM · KMS · CloudWatch · CloudShell · Well-Architected Tool · Pricing Calculator
-**Languages and tools:** Python (boto3) · Bash · AWS CLI · JSON IAM policies · Linux
+**AWS:** Bedrock (generative AI) · EC2 · Elastic Load Balancing · Lambda · S3 · RDS (MySQL) · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · IAM · KMS · CloudWatch · CloudShell · Well-Architected Tool · Pricing Calculator
+**Languages and tools:** Python (boto3) · SQL (MySQL) · Bash · AWS CLI · JSON IAM policies · Linux
 
 ## About me
 <!-- One or two lines about you, plus LinkedIn and email links -->
