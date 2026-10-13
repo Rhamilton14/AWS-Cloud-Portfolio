@@ -1,0 +1,27 @@
+#!/bin/bash
+# Runs once at first boot. Installs the app as a systemd service.
+set -euo pipefail
+
+mkdir -p /opt/webapp
+cat > /opt/webapp/app.py <<'APP'
+${app_code}
+APP
+
+cat > /etc/systemd/system/webapp.service <<'UNIT'
+[Unit]
+Description=Project 19 web app
+After=network-online.target
+
+[Service]
+Environment=APP_PORT=${app_port}
+Environment=APP_VERSION=${app_version}
+ExecStart=/usr/bin/python3 /opt/webapp/app.py
+Restart=always
+DynamicUser=yes
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+
+systemctl daemon-reload
+systemctl enable --now webapp

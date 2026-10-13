@@ -1,0 +1,163 @@
+# CI/CD for 19-terraform-cicd-break-fix
+#   Pull request -> fmt, validate, lint, then a terraform plan posted to the run summary
+#   Merge to main -> plan, wait for approval in the "production" environment, apply, smoke test
+# The AWS jobs only run once the repo variables from bootstrap/ are set, so the
+# checks stay green before any AWS account is connected.
+name: "Project 19: Terraform CI/CD"
+
+on:
+  pull_request:
+    paths:
+      - "19-terraform-cicd-break-fix/**"
+      - ".github/workflows/project-19-terraform.yml"
+  push:
+    branches: [main]
+    paths:
+      - "19-terraform-cicd-break-fix/**"
+      - ".github/workflows/project-19-terraform.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: project-19-terraform-${{ github.ref }}
+  cancel-in-progress: false # never cancel an apply halfway through
+
+env:
+  TF_VERSION: "1.13.3"
+  TF_DIR: 19-terraform-cicd-break-fix/terraform
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+  TF_VAR_region: ${{ vars.AWS_REGION || 'us-east-1' }}
+  TF_VAR_alarm_email: ${{ vars.ALARM_EMAIL }}
+
+jobs:
+  validate:
+    name: Format, validate, lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - name: terraform fmt
+        run: terraform fmt -check -recursive -diff 19-terraform-cicd-break-fix
+
+      - name: terraform validate (app stack)
+        working-directory: ${{ env.TF_DIR }}
+        run: |
+          terraform init -backend=false -input=false
+          terraform validate
+
+      - name: terraform validate (bootstrap)
+        working-directory: 19-terraform-cicd-break-fix/bootstrap
+        run: |
+          terraform init -backend=false -input=false
+          terraform validate
+
+      - uses: terraform-linters/setup-tflint@v4
+      - name: tflint
+        working-directory: 19-terraform-cicd-break-fix
+        run: tflint --recursive
+
+      - name: App syntax check
+        run: python3 -m py_compile 19-terraform-cicd-break-fix/app/app.py
+
+  plan:
+    name: Plan
+    needs: validate
+    if: vars.AWS_PLAN_ROLE_ARN != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # lets the job get an OIDC token to assume the AWS role
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_PLAN_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: terraform init
+        working-directory: ${{ env.TF_DIR }}
+        run: >-
+          terraform init -input=false
+          -backend-config="bucket=${{ vars.AWS_STATE_BUCKET }}"
+          -backend-config="region=${{ env.AWS_REGION }}"
+
+      - name: terraform plan
+        working-directory: ${{ env.TF_DIR }}
+        run: |
+          terraform plan -input=false -no-color -out=tfplan | tee plan.txt
+          {
+            echo '### Terraform plan'
+            echo '```'
+            grep -E '^(Plan:|No changes)|will be (created|destroyed|updated|replaced)|must be replaced' plan.txt || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  apply:
+    name: Apply
+    needs: plan
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.AWS_APPLY_ROLE_ARN != ''
+    runs-on: ubuntu-latest
+    environment: production # required reviewers pause the run here until approved
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false # so `terraform output -raw` prints clean values
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_APPLY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: terraform init
+        working-directory: ${{ env.TF_DIR }}
+        run: >-
+          terraform init -input=false
+          -backend-config="bucket=${{ vars.AWS_STATE_BUCKET }}"
+          -backend-config="region=${{ env.AWS_REGION }}"
+
+      - name: terraform apply
+        working-directory: ${{ env.TF_DIR }}
+        run: terraform apply -input=false -auto-approve
+
+      - name: Wait for the rolling deploy to finish
+        working-directory: ${{ env.TF_DIR }}
+        run: |
+          asg=$(terraform output -raw asg_name)
+          for i in $(seq 1 40); do
+            status=$(aws autoscaling describe-instance-refreshes --auto-scaling-group-name "$asg" \
+              --max-records 1 --query 'InstanceRefreshes[0].Status' --output text)
+            echo "Instance refresh: $status"
+            case "$status" in
+              None|Successful) exit 0 ;;
+              Failed|Cancelled|RollbackSuccessful|RollbackFailed) exit 1 ;;
+            esac
+            sleep 30
+          done
+          echo "Timed out waiting for the instance refresh"; exit 1
+
+      - name: Smoke test
+        working-directory: ${{ env.TF_DIR }}
+        run: |
+          url=$(terraform output -raw app_url)
+          for i in $(seq 1 20); do
+            if curl -fsS "$url/health"; then echo; echo "Healthy: $url"; exit 0; fi
+            echo "Not healthy yet, retrying in 15s"; sleep 15
+          done
+          echo "Smoke test failed for $url"; exit 1

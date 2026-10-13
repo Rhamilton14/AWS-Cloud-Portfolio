@@ -1,0 +1,67 @@
+# Nightly drift check for 19-terraform-cicd-break-fix.
+# Fails (and emails you through GitHub's failed-run notification) when the real
+# AWS resources no longer match the Terraform code, e.g. someone edited a
+# security group in the console. This is the guard added after the break/fix.
+name: "Project 19: Drift check"
+
+on:
+  schedule:
+    - cron: "0 12 * * *" # daily, 12:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  TF_VERSION: "1.13.3"
+  TF_DIR: 19-terraform-cicd-break-fix/terraform
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+  TF_VAR_region: ${{ vars.AWS_REGION || 'us-east-1' }}
+  TF_VAR_alarm_email: ${{ vars.ALARM_EMAIL }}
+
+jobs:
+  drift:
+    name: Detect drift
+    if: vars.AWS_PLAN_ROLE_ARN != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false # keep plan's real exit code
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_PLAN_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: terraform init
+        working-directory: ${{ env.TF_DIR }}
+        run: >-
+          terraform init -input=false
+          -backend-config="bucket=${{ vars.AWS_STATE_BUCKET }}"
+          -backend-config="region=${{ env.AWS_REGION }}"
+
+      - name: terraform plan -detailed-exitcode
+        working-directory: ${{ env.TF_DIR }}
+        run: |
+          # 0 = matches code, 1 = error, 2 = drift
+          set +e
+          terraform plan -input=false -no-color -detailed-exitcode -lock=false > plan.txt
+          code=$?
+          set -e
+          cat plan.txt
+          if [ "$code" -eq 2 ]; then
+            {
+              echo '### Drift detected'
+              echo 'AWS no longer matches the Terraform code. Changes needed to put it back:'
+              echo '```'
+              grep -E 'will be (created|destroyed|updated)|must be replaced|^Plan:' plan.txt || true
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          exit "$code"
