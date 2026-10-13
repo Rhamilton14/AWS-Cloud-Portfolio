@@ -1,0 +1,4 @@
+# Copy to terraform.tfvars (gitignored) to override defaults.
+region      = "us-east-1"
+app_version = "v1"
+alarm_email = "you@example.com"

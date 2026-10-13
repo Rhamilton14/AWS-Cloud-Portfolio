@@ -26,10 +26,12 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 16 | [RDS Basics](16-rds-basics/) | Launching a managed MySQL database, connecting securely, and defining a SQL schema | RDS (MySQL), VPC security groups, EBS, CloudShell |
 | 17 | [Three-Tier Architecture](17-three-tier-architecture/) | Tracing a request through public and private tiers, then fixing a broken data tier with least-privilege IAM | VPC, ELB (external + internal ALB), EC2, IAM, DynamoDB |
 | 18 | [HA + Auto Scaling Three-Tier](18-ha-scalable-three-tier/) | Making a three-tier app multi-AZ, then load testing it to watch it scale out to 3 and back in to 1 | EC2 Auto Scaling, CloudWatch alarms, ELB, EC2, DynamoDB |
+| 19 | [Terraform, CI/CD and a Break/Fix](19-terraform-cicd-break-fix/) | Building a VPC + ALB + Auto Scaling app from code, deploying it through GitHub Actions, then breaking and fixing it on purpose | Terraform, GitHub Actions (OIDC), VPC, ELB (ALB), EC2 Auto Scaling, CloudWatch, SNS, IAM |
 | 20 | [Customer Support Agent on Bedrock AgentCore](20-agentcore-customer-support-agent/) | Deploying an AI agent with memory, a tool gateway, JWT auth, evaluations, Cedar policy guardrails and prompt optimization | Bedrock AgentCore (Runtime, Memory, Gateway, Policy, Harness, Evaluations), Cognito, Lambda, CloudWatch |
 
 ## Skills
 **AWS:** Bedrock + AgentCore (generative AI agents) · Cognito (JWT) · EC2 · EC2 Auto Scaling · Elastic Load Balancing · Lambda · S3 · RDS (MySQL) · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · IAM · KMS · CloudWatch (metrics + alarms) · CloudShell · Well-Architected Tool · Pricing Calculator
+**Infrastructure as code and CI/CD:** Terraform · GitHub Actions · OIDC federation · drift detection
 **Languages and tools:** Python (boto3) · SQL (MySQL) · Bash · AWS CLI · JSON IAM policies · Linux
 
 ## About me
