@@ -1,0 +1,10 @@
+# CloudWatch Logs Insights: cold start rate and init duration per memory size
+# Log group: /aws/lambda/<function-name>
+filter @type = "REPORT"
+| stats count(*) as invokes,
+        count(@initDuration) as cold_starts,
+        avg(@initDuration) as avg_init_ms,
+        max(@initDuration) as max_init_ms,
+        avg(@duration) as avg_duration_ms
+  by @memorySize / 1000 / 1000 as memory_mb
+| sort memory_mb asc
