@@ -96,6 +96,3 @@ App tier → DynamoDB is controlled by IAM (the instance's role), not security g
 - **Least privilege in practice:** the fix gave the app read-only access (GetItem, Scan, Query) on one table, not `dynamodb:*` on everything.
 - **Roles beat keys:** the instance gets rotating temporary credentials from its role, so there are no access keys stored on the server, and a role swap takes effect without a restart.
 - **Mix and match services:** the same pattern works with Lambda instead of EC2 in the app tier, or RDS instead of DynamoDB in the data tier.
-
----
-[← Back to all labs](../README.md)
