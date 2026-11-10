@@ -57,6 +57,3 @@ SEC 6 (protect compute resources) was also high risk, but it matters less for an
 - Pillars can conflict (for example cost vs. reliability), so the framework is about making informed trade-offs, not a perfect score.
 - High-risk items give a clear order for fixing things, and milestones let you track progress between reviews.
 - Reviews should be repeated over time as the workload changes.
-
----
-[← Back to all labs](../README.md)
