@@ -106,6 +106,3 @@ Labs 1 and 2 (redacted):
 
 ## Cleanup
 Deleted both CloudFormation stacks, the CDK bootstrap stack and its bucket, the OAuth credential provider, the log groups, the IAM user and its access key, and disabled CloudWatch Transaction Search.
-
----
-[← Back to all labs](../README.md)
