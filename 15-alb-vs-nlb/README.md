@@ -80,6 +80,3 @@ client ──► NLB ─────────── TCP :8080 ──► EC2 A
 - **Use both together** when you need static IPs and path routing: put an NLB in front of an ALB (an ALB-type target group).
 - **Cost:** cross-zone traffic is free on an ALB but billed on an NLB when cross-zone load balancing is turned on.
 - **Measure, don't assume.** My latency test didn't match the textbook, and understanding why was the most useful part of the lab.
-
----
-[← Back to all labs](../README.md)
