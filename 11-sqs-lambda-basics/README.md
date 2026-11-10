@@ -60,6 +60,3 @@ def lambda_handler(event, context):
 - **Batches:** SQS delivers messages to Lambda in a `Records` list (up to 10 by default), so the code always loops.
 - **No polling code:** there's no `boto3.client("sqs")`. The trigger (event source mapping) is an AWS-managed poller that invokes the function.
 - **Success vs. failure:** SQS only cares whether the function returns or raises. On an error, messages become visible again after the **visibility timeout**, which should be longer than the function's run time to avoid processing a message twice.
-
----
-[← Back to all labs](../README.md)
