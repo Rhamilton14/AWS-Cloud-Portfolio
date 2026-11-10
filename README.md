@@ -29,6 +29,7 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 19 | [Lambda Cold Start Optimization](19-lambda-cold-start/) | Cutting a cold start from 5.3 s to 0.5 s by fixing global-scope code, compared with Provisioned Concurrency | Lambda (versions, Provisioned Concurrency), CloudWatch Logs, DynamoDB |
 | 20 | [Customer Support Agent on Bedrock AgentCore](20-agentcore-customer-support-agent/) | Deploying an AI agent with memory, a tool gateway, JWT auth, evaluations, Cedar policy guardrails and prompt optimization | Bedrock AgentCore (Runtime, Memory, Gateway, Policy, Harness, Evaluations), Cognito, Lambda, CloudWatch |
 | 21 | [Observability with X-Ray and CloudWatch](21-observability-xray-cloudwatch/) | Tracking a 5-second API delay to one line of code with metrics, traces and logs, plus two cold starts and a silent logging bug | X-Ray, CloudWatch (Logs, Metrics, Dashboards), Lambda, API Gateway, DynamoDB, S3 |
+| 22 | [Custom Domain for an ALB with Route 53](22-route53-custom-domain-alb/) | Pointing an apex domain at a load balancer with an alias record, checking it with dig, and blocking direct ALB access with a Host header rule | Route 53, Elastic Load Balancing (ALB), Lambda, CloudShell |
 
 ## Skills
 **AWS:** Bedrock + AgentCore (generative AI agents) · Cognito (JWT) · EC2 · EC2 Auto Scaling · Elastic Load Balancing · Lambda · S3 · RDS (MySQL) · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · IAM · KMS · CloudWatch (metrics + alarms) · CloudShell · Well-Architected Tool · Pricing Calculator
