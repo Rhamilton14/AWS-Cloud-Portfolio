@@ -2,7 +2,7 @@
 
 ![AWS Cloud Portfolio](assets/portfolio-banner.png)
 
-Hands-on AWS projects covering compute, serverless, storage, databases, security and event-driven architecture, plus a project-management simulation.
+Hands-on AWS projects covering compute, serverless, storage, databases, security, networking, observability, generative AI and event-driven architecture.
 
 ## Projects
 
@@ -32,7 +32,7 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 22 | [Custom Domain for an ALB with Route 53](22-route53-custom-domain-alb/) | Pointing an apex domain at a load balancer with an alias record, checking it with dig, and blocking direct ALB access with a Host header rule | Route 53, Elastic Load Balancing (ALB), Lambda, CloudShell |
 
 ## Skills
-**AWS:** Bedrock + AgentCore (generative AI agents) · Cognito (JWT) · EC2 · EC2 Auto Scaling · Elastic Load Balancing · Lambda · S3 · RDS (MySQL) · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · IAM · KMS · CloudWatch (metrics + alarms) · CloudShell · Well-Architected Tool · Pricing Calculator
+**AWS:** Bedrock + AgentCore (generative AI agents) · Cognito (JWT) · EC2 · EC2 Auto Scaling · Elastic Load Balancing · Lambda · S3 · RDS (MySQL) · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · Route 53 · IAM · KMS · CloudWatch (metrics, logs, dashboards + alarms) · X-Ray · CloudShell · Well-Architected Tool · Pricing Calculator
 **Languages and tools:** Python (boto3) · SQL (MySQL) · Bash · AWS CLI · JSON IAM policies · Linux
 
 ## About me
