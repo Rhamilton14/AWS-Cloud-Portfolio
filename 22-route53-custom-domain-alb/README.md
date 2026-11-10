@@ -112,6 +112,3 @@ User ───────────► Route 53 (public hosted zone)     │
 - **`Server: awselb/2.0` tells you who answered.** The 403 came from the load balancer, so Lambda never ran. Checking response headers with `curl -i` is a quick way to tell an ALB error from an application error.
 - **`user_agent` was always "Unknown".** Even `curl` sends a User-Agent, so the Lambda code probably looks the header up with the wrong case: ALB passes header names to Lambda in lowercase (`user-agent`). I didn't see the function code, so that's my best guess.
 - **ALBs are regional, Route 53 is global.** One ALB can't send traffic to another Region. To serve users from several Regions, you put an ALB in each and let Route 53 choose with latency or failover routing.
-
----
-[← Back to all labs](../README.md)
