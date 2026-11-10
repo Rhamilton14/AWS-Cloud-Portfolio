@@ -93,6 +93,3 @@ Provisioned Concurrency runs INIT ahead of time, before any request arrives.
 - **Provisioned Concurrency moves the init, it doesn't remove it.** The log still had a 6,201 ms `INIT_REPORT`, but it ran before my request. My request was billed 752 ms instead of 6,068 ms. The warm environment is billed separately, whether or not it gets traffic.
 - **It only works on a version or alias.** Testing `$LATEST` still showed the full cold start.
 - **SnapStart is another option** for supported runtimes. It snapshots the initialized environment, but it can't be combined with Provisioned Concurrency.
-
----
-[← Back to all labs](../README.md)
