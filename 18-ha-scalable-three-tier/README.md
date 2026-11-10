@@ -108,6 +108,3 @@ Each ASG has two CloudWatch alarms and two simple scaling policies:
 - **Scale out fast, scale in slow.** A 1-minute trigger to add and a 5-minute trigger to remove, plus a cooldown, keeps the group from flapping.
 - **Auto Scaling and load balancing work as a pair.** The ASG launches and registers servers in the target group. Health checks decide when they get traffic.
 - **Servers are replaceable.** Scale-in terminated the app tier's original server. That's fine, because every instance comes from the same launch template.
-
----
-[← Back to all labs](../README.md)
