@@ -56,6 +56,3 @@ Internet
 - Listener rules are checked in priority order, and the default action catches anything no rule matches.
 - An internet-facing ALB needs public subnets in at least two Availability Zones and a security group, because it lives inside a VPC (unlike API Gateway).
 - Lambda target groups have health checks off by default, since every health check would be a paid invocation.
-
----
-[← Back to all labs](../README.md)
