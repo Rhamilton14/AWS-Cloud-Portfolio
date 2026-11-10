@@ -54,6 +54,3 @@ S3 bucket ───────┼── object removed ──► SNS topic ─�
 - Event payloads carry object metadata, not the object content.
 - EventBridge receives *all* bucket events with no prefix or suffix filtering in S3; filtering happens in EventBridge rules. It can route to many targets, such as Step Functions for file-processing pipelines.
 - SNS in the middle enables fan-out to many subscribers.
-
----
-[← Back to all labs](../README.md)
