@@ -59,6 +59,3 @@ sudo systemctl status httpd     # Active: active (running)
 - How security groups act as the instance firewall.
 - EC2 Instance Connect gives shell access without managing SSH keys.
 - With EC2 I own the OS and the web server, which is the trade-off against serverless options like Lambda.
-
----
-[← Back to all labs](../README.md)
