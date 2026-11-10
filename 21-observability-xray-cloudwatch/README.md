@@ -108,3 +108,6 @@ CloudWatch Metrics + Dashboard ◄── Invocations, Duration, Errors
 - **Read the custom metric code before trusting the graph.** `DataRetrieved` publishes the number of items returned, not 1 per call, so the graph reached 2 after a single Get All.
 - **Observability needs IAM too.** The new trace details page needs `xray:GetDistinctTraceGraphs`. The lab role didn't have it, so the most useful view was blocked. In a real account, check that on-call roles can read traces before an incident.
 - **X-Ray isn't only for Lambda.** Any code that runs the SDK (EC2, ECS, EKS, on-premises) can send traces, through the X-Ray daemon or the AWS Distro for OpenTelemetry collector.
+
+---
+[← Back to all labs](../README.md)

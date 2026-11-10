@@ -66,3 +66,6 @@ I rebuilt the lab in my own AWS account with a bucket holding a fake password fi
 - **Defense in depth:** the bucket policy controls *who* can reach the bucket, the IAM role controls *what* the function can do, and both must allow access.
 - An explicit Deny with a condition is how you carve out a single allowed principal.
 - Other best practices: versioning (can be suspended but never fully disabled), Object Lock, lifecycle rules, VPC endpoints, and CloudTrail/CloudWatch monitoring.
+
+---
+[← Back to all labs](../README.md)

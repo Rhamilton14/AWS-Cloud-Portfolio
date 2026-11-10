@@ -82,3 +82,6 @@ aws cloudwatch get-metric-statistics --namespace AWS/Lambda --metric-name Invoca
 - Anything I can click in the Console I can script with the CLI, which is much faster for repeat work.
 - CloudShell authenticates with temporary role credentials, which avoids hard-coded access keys.
 - CLI security basics: least-privilege roles, temporary STS credentials over long-lived keys, MFA, and CloudTrail auditing of every call.
+
+---
+[← Back to all labs](../README.md)

@@ -68,3 +68,6 @@ Full source: [`lambda_function.py`](lambda_function.py). The table name comes fr
 - The low-level client wraps every value in a type descriptor (`{"S": "..."}`, `{"N": "5"}`).
 - `put_item` silently overwrites, `get_item` returns no `Item` instead of an error (so the code returns 404 itself), and `delete_item` on a missing key is a no-op.
 - Reading config from environment variables lets the same code target dev, test and prod tables.
+
+---
+[← Back to all labs](../README.md)

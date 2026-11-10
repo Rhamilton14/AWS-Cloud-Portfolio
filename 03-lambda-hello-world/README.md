@@ -54,3 +54,6 @@ def lambda_handler(event, context):
 - Lambda lets you choose memory only; CPU is allocated in proportion to it. More memory is faster but costs more per millisecond.
 - Unreserved concurrency is a pool shared by every function in the account and region. Reserved concurrency guarantees capacity for a critical function and also caps cost.
 - No servers or AMIs to manage, which is why serverless suits spiky or infrequent traffic.
+
+---
+[← Back to all labs](../README.md)

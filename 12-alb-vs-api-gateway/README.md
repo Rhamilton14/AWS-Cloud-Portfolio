@@ -81,3 +81,6 @@ Lesson: a `200`/`201` isn't proof that things work. Read the response and check 
 - **Networking:** an ALB must sit in VPC subnets; API Gateway isn't attached to a VPC at all.
 - **Security in transit:** API Gateway is HTTPS by default; the ALB's default DNS name is plain HTTP.
 - **Neither is always better:** for steady, heavy traffic an ALB's flat hourly price can beat per-request API Gateway pricing; for spiky or low traffic and rich API features, API Gateway wins.
+
+---
+[← Back to all labs](../README.md)

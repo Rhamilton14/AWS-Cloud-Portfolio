@@ -71,3 +71,6 @@ RDS MySQL 8.4 · db.t3.micro · Single-AZ (us-east-1a)
 - **Connect by endpoint, never by IP.** The DNS name stays the same when AWS replaces the host during maintenance or a Multi-AZ failover.
 - **Production would look different:** Public access off, the database in private subnets, the security group allowing 3306 only from the app tier's security group, **Multi-AZ** for high availability, credentials in **Secrets Manager**, and encryption at rest with KMS.
 - **Backups:** automated backups and point-in-time restore work with InnoDB, MySQL's default storage engine.
+
+---
+[← Back to all labs](../README.md)

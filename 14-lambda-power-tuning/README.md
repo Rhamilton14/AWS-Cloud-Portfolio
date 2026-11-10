@@ -84,3 +84,6 @@ Step Functions state machine (Power Tuning tool)
 - **It depends on the code.** CPU-bound code (like this hashing loop) benefits most. Code that mostly waits on a database or API won't speed up, so tuning would point to a small memory size. That's why you measure each function.
 - **Pricing Calculator traps:** the request unit defaults to "per month" (not millions), and the "Include Free Tier" option can hide the real cost. I compared both settings without Free Tier.
 - **Cleanup:** SAR apps are CloudFormation stacks, so one stack delete removed all 20 tool resources.
+
+---
+[← Back to all labs](../README.md)
