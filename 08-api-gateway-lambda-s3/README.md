@@ -63,6 +63,3 @@ Resource tree:
 - API Gateway can call AWS services like S3 directly, saving a Lambda hop for simple reads. S3 expects a plain REST call, so this one isn't a proxy integration.
 - `{proxy+}` is a greedy path variable that captures everything after the base path.
 - Nothing is live until the API is **deployed** to a stage.
-
----
-[← Back to all labs](../README.md)
