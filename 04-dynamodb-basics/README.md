@@ -42,6 +42,3 @@ I created a DynamoDB table with a string partition key named `id`, added an item
 ## What I learned
 - DynamoDB only needs the key schema up front; every other attribute is flexible per item.
 - The partition key is how DynamoDB finds an item quickly, so choosing it well matters.
-
----
-[← Back to all labs](../README.md)
