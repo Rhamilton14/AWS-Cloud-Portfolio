@@ -25,7 +25,7 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 15 | [ALB vs NLB](15-alb-vs-nlb/) | Layer 7 path routing vs Layer 4 port routing on the same servers, tested and compared | ELB (ALB + NLB), EC2, Lambda, CloudShell |
 | 16 | [RDS Basics](16-rds-basics/) | Launching a managed MySQL database, connecting securely, and defining a SQL schema | RDS (MySQL), VPC security groups, EBS, CloudShell |
 | 17 | [Three-Tier Architecture](17-three-tier-architecture/) | Tracing a request through public and private tiers, then fixing a broken data tier with least-privilege IAM | VPC, ELB (external + internal ALB), EC2, IAM, DynamoDB |
-| 18 | [HA + Auto Scaling Three-Tier](18-ha-scalable-three-tier/) | Making a three-tier app multi-AZ, then load testing it to watch it scale out to 3 and back in to 1 | EC2 Auto Scaling, CloudWatch alarms, ELB, EC2, DynamoDB |
+| 18 | [HA + Auto Scaling Three-Tier](18-ha-scalable-three-tier/) | Making a three-tier app multi-AZ, then load testing it to watch it scale out to 3 and back in to 1, plus a CloudFormation template that rebuilds the whole stack | EC2 Auto Scaling, CloudWatch alarms, ELB, EC2, DynamoDB, CloudFormation |
 | 19 | [Lambda Cold Start Optimization](19-lambda-cold-start/) | Cutting a cold start from 5.3 s to 0.5 s by fixing global-scope code, compared with Provisioned Concurrency | Lambda (versions, Provisioned Concurrency), CloudWatch Logs, DynamoDB |
 | 20 | [Customer Support Agent on Bedrock AgentCore](20-agentcore-customer-support-agent/) | Deploying an AI agent with memory, a tool gateway, JWT auth, evaluations, Cedar policy guardrails and prompt optimization | Bedrock AgentCore (Runtime, Memory, Gateway, Policy, Harness, Evaluations), Cognito, Lambda, CloudWatch |
 | 21 | [Observability with X-Ray and CloudWatch](21-observability-xray-cloudwatch/) | Tracking a 5-second API delay to one line of code with metrics, traces and logs, plus two cold starts and a silent logging bug | X-Ray, CloudWatch (Logs, Metrics, Dashboards), Lambda, API Gateway, DynamoDB, S3 |
@@ -34,7 +34,7 @@ Hands-on AWS projects covering compute, serverless, storage, databases, security
 | 24 | [Database and Server Migration with DMS and MGN](24-dms-mgn-database-server-migration/) | *In progress:* migrating a MySQL database to RDS with full load + CDC, and replicating a WordPress server to AWS until a Free Tier limit blocked the test launch | DMS, RDS (MySQL), Application Migration Service (MGN), EC2, Systems Manager, CloudFormation |
 
 ## Skills
-**AWS:** Bedrock + AgentCore (generative AI agents) · Cognito (JWT) · EC2 · EC2 Auto Scaling · Elastic Load Balancing · Lambda · S3 · RDS (MySQL) · DMS · Application Migration Service (MGN) · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · Route 53 · ACM (TLS certificates) · IAM · KMS · CloudWatch (metrics, logs, dashboards + alarms) · X-Ray · CloudShell · Well-Architected Tool · Pricing Calculator
+**AWS:** Bedrock + AgentCore (generative AI agents) · Cognito (JWT) · EC2 · EC2 Auto Scaling · Elastic Load Balancing · Lambda · S3 · RDS (MySQL) · DMS · Application Migration Service (MGN) · DynamoDB · API Gateway · SQS · SNS · Step Functions · EventBridge · CloudFormation · Route 53 · ACM (TLS certificates) · IAM · KMS · CloudWatch (metrics, logs, dashboards + alarms) · X-Ray · CloudShell · Well-Architected Tool · Pricing Calculator
 **Languages and tools:** Python (boto3) · SQL (MySQL) · Bash · AWS CLI · JSON IAM policies · Linux
 
 ## About me

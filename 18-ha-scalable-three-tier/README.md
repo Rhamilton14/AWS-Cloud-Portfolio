@@ -35,6 +35,9 @@ Each ASG has two CloudWatch alarms and two simple scaling policies:
   Cooldown : 120 seconds after each scaling action
 ```
 
+## CloudFormation build
+I also rebuilt this architecture as code. [`cloudformation/`](cloudformation/) has a single [`template.yaml`](cloudformation/template.yaml) that deploys a VPC across 2 AZs, a public ALB, an EC2 Auto Scaling group (min 2, max 4, target tracking at 50% CPU) in private subnets, and DynamoDB through a free VPC gateway endpoint. It comes with an [architecture diagram](cloudformation/docs/architecture.png), a [high availability write-up](cloudformation/docs/high-availability.md), a [Well-Architected review](cloudformation/docs/well-architected.md) and a [cost estimate](cloudformation/docs/cost-estimate.md).
+
 ## Steps
 1. **Starting point:** the web tier ASG was **min 1, desired 1, max 3**. That's one server in one AZ, so if that AZ goes down, the whole site goes down.
 2. **Make it highly available:** I edited Group size to **desired 2, min 2, max 3**. The ASG launched a second `web-tier-asg` instance in **us-east-1a**, while the first was in **us-east-1b**. The ASG balances across AZs on its own.

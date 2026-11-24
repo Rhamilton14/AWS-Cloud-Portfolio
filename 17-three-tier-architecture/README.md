@@ -89,6 +89,8 @@ App tier → DynamoDB is controlled by IAM (the instance's role), not security g
 - **The lab account's console role is read-limited.** Red "not authorized" banners on volumes, Elastic IPs and Compute Optimizer were expected noise.
 - **DynamoDB "Item count 0" is not live.** It's refreshed about every 6 hours. Explore items showed the real 3 rows.
 
+For a general checklist that walks every connection point between the tiers (security groups, target group health checks, IAM, routes), see [`troubleshooting.md`](../18-ha-scalable-three-tier/cloudformation/docs/troubleshooting.md) in my CloudFormation build of this architecture.
+
 ## What I learned
 - **Three tiers, three jobs:** presentation (web), logic (app) and data (database). Each one can scale, be secured and be changed on its own.
 - **Only the load balancer is public.** Both servers live in private subnets, and the internal ALB is unreachable from the internet. That shrinks the attack surface to one entry point.
